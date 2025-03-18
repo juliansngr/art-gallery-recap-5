@@ -24,7 +24,9 @@ export function ArtGalleryProvider({ children }) {
 
   const handleRemoveLike = () => {};
 
-  console.log(data);
+  if (isLoading) {
+    return <h1>🖼️ Loading... </h1>;
+  }
 
   return (
     <ArtGalleryContext.Provider
