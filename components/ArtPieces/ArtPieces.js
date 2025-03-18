@@ -2,7 +2,7 @@ import ArtPiece from "../ArtPiece/ArtPiece";
 
 export default function ArtPieces({ art }) {
   return (
-    <>
+    <ul>
       {art.map((painting) => (
         <li key={painting.slug}>
           <ArtPiece
@@ -14,6 +14,6 @@ export default function ArtPieces({ art }) {
           />
         </li>
       ))}
-    </>
+    </ul>
   );
 }
