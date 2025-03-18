@@ -1,4 +1,4 @@
-import { useArtGalleryContext } from "./utils/ArtGalleryContext";
+import { useArtGalleryContext } from "../utils/ArtGalleryContext";
 
 export default function HomePage() {
   const { bilder, data, isLoading } = useArtGalleryContext();
