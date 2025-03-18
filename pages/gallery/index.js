@@ -5,9 +5,6 @@ import { useArtGalleryContext } from "@/utils/ArtGalleryContext";
 export default function GalleryPage() {
   const { data: art, isLoading, error } = useArtGalleryContext();
 
-  if (isLoading) {
-    return <h1>🖼️ Loading... </h1>;
-  }
 
   return (
     <Layout>
