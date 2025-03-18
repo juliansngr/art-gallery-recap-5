@@ -15,7 +15,9 @@ export function ArtGalleryProvider({ children }) {
     fetcher
   );
 
-  console.log(data);
+  if (isLoading) {
+    return <h1>🖼️ Loading... </h1>;
+  }
 
   return (
     <ArtGalleryContext.Provider
