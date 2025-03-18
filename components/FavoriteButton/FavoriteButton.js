@@ -1,3 +1,4 @@
+import { useArtGalleryContext } from "@/utils/ArtGalleryContext";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -11,7 +12,6 @@ const StyledButton = styled.button`
 `;
 
 export default function FavoriteButton({ slug }) {
-  const [isLiked, setIsLiked] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
 
   const { likedArtSlugs, handleLike, handleRemoveLike } =
@@ -20,7 +20,7 @@ export default function FavoriteButton({ slug }) {
   return (
     <>
       <StyledButton
-        isLiked={isLiked}
+        isLiked={likedArtSlugs.includes(slug)}
         onMouseEnter={() => {
           setIsHovering(true);
         }}
@@ -28,10 +28,19 @@ export default function FavoriteButton({ slug }) {
           setIsHovering(false);
         }}
         onClick={() => {
-          setIsLiked(!isLiked);
+          console.log(slug);
+          if (likedArtSlugs.includes(slug)) {
+            handleRemoveLike(slug);
+          } else {
+            handleLike(slug);
+          }
         }}
       >
-        {isLiked ? (isHovering ? "💔 Noooo" : "❤️ Liked!") : "🖤 Like"}
+        {likedArtSlugs.includes(slug)
+          ? isHovering
+            ? "💔 Noooo"
+            : "❤️ Liked!"
+          : "🖤 Like"}
       </StyledButton>
     </>
   );

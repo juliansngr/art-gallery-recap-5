@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import useSWR from "swr";
 import useLocalStorageState from "use-local-storage-state";
 
@@ -19,10 +19,17 @@ export function ArtGalleryProvider({ children }) {
 
   const handleLike = (slugToAdd) => {
     const newLike = data.find((art) => art.slug === slugToAdd);
-    setLikedArtSlugs([newLike, ...likedArtSlugs]);
+    setLikedArtSlugs([newLike.slug, ...likedArtSlugs]);
   };
 
-  const handleRemoveLike = () => {};
+  const handleRemoveLike = (slugToRemove) => {
+    const likesRemoved = likedArtSlugs.filter((slug) => {
+      if (slug !== slugToRemove) {
+        return slug;
+      }
+    });
+    setLikedArtSlugs(likesRemoved);
+  };
 
   if (isLoading) {
     return <h1>🖼️ Loading... </h1>;
@@ -31,7 +38,6 @@ export function ArtGalleryProvider({ children }) {
   return (
     <ArtGalleryContext.Provider
       value={{
-        bilder,
         data,
         error,
         isLoading,

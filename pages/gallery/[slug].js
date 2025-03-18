@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import ChevronLeft from "@/public/chevron-left.svg";
+import FavoriteButton from "@/components/FavoriteButton/FavoriteButton";
+import ArtPiece from "@/components/ArtPiece/ArtPiece";
 
 export default function ArtPieceDetail() {
   const router = useRouter();
@@ -13,6 +15,7 @@ export default function ArtPieceDetail() {
   const artPiece = art.find((painting) => painting.slug === slug);
 
   const {
+    slug: openedSlug,
     imageSource: image,
     name,
     artist,
@@ -28,16 +31,17 @@ export default function ArtPieceDetail() {
           gallery
         </button>
       </Link>
-      <Image
-        src={image}
-        width={dimensions.width / 6}
-        height={dimensions.height / 6}
-        alt={`${name} from ${artist}`}
+
+      <ArtPiece
+        slug={openedSlug}
+        name={name}
+        image={image}
+        width={dimensions.width}
+        height={dimensions.height}
+        artist={artist}
+        year={year}
+        genre={genre}
       />
-      <h1>{name}</h1>
-      <p> {artist}</p>
-      <p> {year}</p>
-      <p> {genre}</p>
     </>
   );
 }
