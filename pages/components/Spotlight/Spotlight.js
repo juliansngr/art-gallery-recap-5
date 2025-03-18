@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useArtGalleryContext } from "../utils/ArtGalleryContext";
+import { useArtGalleryContext } from "@/utils/ArtGalleryContext";
 
 export default function Spotlight() {
   const { data, isLoading } = useArtGalleryContext();
