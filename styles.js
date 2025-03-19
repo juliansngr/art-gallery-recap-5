@@ -18,7 +18,7 @@ export default createGlobalStyle`
     --background: #232323;
     --on-surface: #edede9;
   }
-
+      
   body {
     margin: 0;
     font-family: var(--font-family);
