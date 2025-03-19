@@ -5,7 +5,7 @@ import styled from "styled-components";
 export default function Navigation() {
   const router = useRouter();
   const route = router.route;
-  console.log(route);
+  // console.log(route);
   return (
     <StyledNavigation>
       <NavLink $route={route} href={"/"}> Spotlight </NavLink>
@@ -25,7 +25,7 @@ const StyledNavigation = styled.nav`
 const NavLink = styled(Link)`
   text-decoration: none;
   color: var(--on-surface);
-  padding: 5px;
+  padding: 5px 10px;
   border-radius: 5px;
   color: ${({$route, href}) => $route === href ? "var(--hover-button)" : ""};
   &:hover {

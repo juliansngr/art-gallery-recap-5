@@ -34,7 +34,7 @@ export default function FavoriteButton({ slug }) {
           setIsHovering(false);
         }}
         onClick={() => {
-          console.log(slug);
+          // console.log(slug);
           if (likedArtSlugs.includes(slug)) {
             handleRemoveLike(slug);
           } else {

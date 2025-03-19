@@ -6,11 +6,8 @@ import ChevronLeft from "@/public/chevron-left.svg";
 import FavoriteButton from "@/components/FavoriteButton/FavoriteButton";
 import ArtPiece from "@/components/ArtPiece/ArtPiece";
 import Layout from "@/components/Layout/Layout";
-<<<<<<< HEAD
 import styled from "styled-components";
-=======
 import CommentSection from "@/components/CommentSection/CommentSection";
->>>>>>> main
 
 export default function ArtPieceDetail() {
   const router = useRouter();
@@ -31,6 +28,12 @@ export default function ArtPieceDetail() {
   } = artPiece;
   return (
     <Layout>
+      <BasicLink href="/gallery">
+        <BackButton type="button">
+          <ChevronLeft />
+          Gallery
+        </BackButton>
+      </BasicLink>
       <ArtPiece
         slug={openedSlug}
         name={name}
@@ -41,12 +44,6 @@ export default function ArtPieceDetail() {
         year={year}
         genre={genre}
       />
-      <BasicLink href="/gallery">
-        <BackButton type="button">
-          <ChevronLeft />
-          Gallery
-        </BackButton>
-      </BasicLink>
 
       <CommentSection slug={openedSlug} />
     </Layout>
@@ -58,9 +55,8 @@ const BackButton = styled.button`
   display: flex;
   align-items: center;
   text-decoration: none;
-  margin-top: 1rem;
   border-radius: 5px;
-  padding: 5px 10px 5px 5px;
+  padding: 5px 10px 5px 0px;
   color: var(--on-surface);
   background-color: transparent;
   &:hover {
@@ -70,4 +66,6 @@ const BackButton = styled.button`
 
 export const BasicLink = styled(Link)`
   text-decoration: none;
+  align-self: flex-start;
+  margin-bottom: 1rem;
 `;

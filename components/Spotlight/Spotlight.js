@@ -16,9 +16,9 @@ export default function Spotlight() {
 
   return (
     <>
-      <h1>Spotlight</h1>
+      <StyledHeading>Spotlight</StyledHeading>
       <StyledBody>
-        Have you seen this awesome new art piece by{" "}
+        Have you seen this awesome new art piece<br/> by{" "}
         <StyledArtistBold color={randomArtPiece.colors[3]}>{randomArtPiece.artist}</StyledArtistBold>? NO? Me neither. So here it is:
       </StyledBody>
       <ArtPiece
@@ -33,8 +33,12 @@ export default function Spotlight() {
   );
 }
 
+export const StyledHeading = styled.h1`
+align-self: flex-start;
+`;
 const StyledBody = styled.p`
 font-weight: 300;
+align-self: flex-start;
 `;
 
 const StyledArtistBold = styled.b`
