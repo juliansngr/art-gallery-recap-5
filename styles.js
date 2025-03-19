@@ -17,6 +17,7 @@ export default createGlobalStyle`
     --font-family: ${robotoCon.style.fontFamily},sans-serif;
     --background: #232323;
     --on-surface: #edede9;
+    --is-liked:rgba(70, 70, 70, 0.56);
   }
       
   body {

@@ -1,10 +1,11 @@
 import ArtPiece from "@/components/ArtPiece/ArtPiece";
 import Link from "next/link";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
+import styled from "styled-components";
 
 export default function ArtPieces({ art }) {
   return (
-    <ul>
+    <StyledList>
       {art.map((painting) => (
         <li key={painting.slug}>
           <ArtPiece
@@ -20,6 +21,11 @@ export default function ArtPieces({ art }) {
           </Link> */}
         </li>
       ))}
-    </ul>
+    </StyledList>
   );
 }
+
+const StyledList = styled.ul`
+list-style: none;
+padding: 0;
+`;
