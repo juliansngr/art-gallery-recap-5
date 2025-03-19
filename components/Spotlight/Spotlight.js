@@ -34,11 +34,11 @@ export default function Spotlight() {
 }
 
 export const StyledHeading = styled.h1`
-align-self: flex-start;
+align-self: center;
 `;
 const StyledBody = styled.p`
 font-weight: 300;
-align-self: flex-start;
+align-self: center;
 `;
 
 const StyledArtistBold = styled.b`

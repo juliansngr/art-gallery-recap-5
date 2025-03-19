@@ -14,10 +14,10 @@ export default function ArtPieceDetail() {
   const router = useRouter();
   // console.log(router);
   const { slug } = router.query;
-  const { data: art } = useArtGalleryContext();
+  const { data: arts } = useArtGalleryContext();
 
-  const artPiece = art.find((painting) => painting.slug === slug);
-  console.log(artPiece);
+  const artPiece = arts.find((art) => art.slug === slug);
+  //   console.log(artPiece);
   const {
     slug: openedSlug,
     imageSource: image,
@@ -56,7 +56,7 @@ const BackButton = styled.button`
   all: unset;
   display: flex;
   align-items: center;
-  text-decoration : none;
+  text-decoration: none;
   border-radius: 5px;
   padding: 5px 10px 5px 0px;
   color: var(--on-surface);
