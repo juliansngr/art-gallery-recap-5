@@ -31,6 +31,48 @@ export function ArtGalleryProvider({ children }) {
     setLikedArtSlugs(likesRemoved);
   };
 
+  // ----------- Comment Section -----------------
+  const [comments, setComments] = useLocalStorageState("comments", {
+    defaultValue: [
+      {
+        author: "Joe Joe",
+        date: "19.03.2025",
+        text: "Wow mega klasse toll!",
+        slug: "blue-and-red",
+      },
+      {
+        author: "Pete Pete",
+        date: "19.03.2025",
+        text: "Wow mega klasse UNFASSBAR",
+        slug: "orange-red-and-green",
+      },
+      {
+        author: "Ranjus",
+        date: "19.03.2025",
+        text: "Echt mies!",
+        slug: "kiwi-juice-on-glass",
+      },
+      {
+        author: "LuLuLu",
+        date: "19.03.2025",
+        text: "LüLüLüLüLü",
+        slug: "clay-bust-sculptures",
+      },
+      {
+        author: "Joe Joe",
+        date: "19.03.2025",
+        text: "Wow mega klasse toll!",
+        slug: "clay-bust-sculptures",
+      },
+    ],
+  });
+
+  const handleAddComment = (newComment) => {
+    setComments([newComment, ...comments]);
+  };
+
+  // ----------------------------------------------------
+
   if (isLoading) {
     return <h1>🖼️ Loading... </h1>;
   }
@@ -44,6 +86,8 @@ export function ArtGalleryProvider({ children }) {
         likedArtSlugs,
         handleLike,
         handleRemoveLike,
+        comments,
+        handleAddComment,
       }}
     >
       {children}

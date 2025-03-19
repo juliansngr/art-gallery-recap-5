@@ -6,11 +6,15 @@ import ChevronLeft from "@/public/chevron-left.svg";
 import FavoriteButton from "@/components/FavoriteButton/FavoriteButton";
 import ArtPiece from "@/components/ArtPiece/ArtPiece";
 import Layout from "@/components/Layout/Layout";
+<<<<<<< HEAD
 import styled from "styled-components";
+=======
+import CommentSection from "@/components/CommentSection/CommentSection";
+>>>>>>> main
 
 export default function ArtPieceDetail() {
   const router = useRouter();
-  console.log(router);
+  // console.log(router);
   const { slug } = router.query;
   const { data: art } = useArtGalleryContext();
 
@@ -43,6 +47,8 @@ export default function ArtPieceDetail() {
           Gallery
         </BackButton>
       </BasicLink>
+
+      <CommentSection slug={openedSlug} />
     </Layout>
   );
 }
