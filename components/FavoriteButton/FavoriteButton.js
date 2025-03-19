@@ -7,8 +7,8 @@ const StyledButton = styled.button`
   padding: 5px 20px;
   border-width: 2px;
 
-  background-color: ${(props) => (props.isLiked ? "#FBCEB1" : "white")};
-  border-color: ${(props) => (props.isLiked ? "#fd5c63" : "#636363")};
+  background-color: ${(props) => (props.$isLiked ? "#FBCEB1" : "white")};
+  border-color: ${(props) => (props.$isLiked ? "#fd5c63" : "#636363")};
 `;
 
 export default function FavoriteButton({ slug }) {
@@ -20,7 +20,7 @@ export default function FavoriteButton({ slug }) {
   return (
     <>
       <StyledButton
-        isLiked={likedArtSlugs.includes(slug)}
+        $isLiked={likedArtSlugs.includes(slug)}
         onMouseEnter={() => {
           setIsHovering(true);
         }}
