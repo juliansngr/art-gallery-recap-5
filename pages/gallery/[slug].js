@@ -7,6 +7,7 @@ import FavoriteButton from "@/components/FavoriteButton/FavoriteButton";
 import ArtPiece from "@/components/ArtPiece/ArtPiece";
 import Layout from "@/components/Layout/Layout";
 import CommentSection from "@/components/CommentSection/CommentSection";
+import ColorDisplay from "@/components/ColorDisplay/ColorDisplay";
 
 export default function ArtPieceDetail() {
   const router = useRouter();
@@ -15,7 +16,7 @@ export default function ArtPieceDetail() {
   const { data: art } = useArtGalleryContext();
 
   const artPiece = art.find((painting) => painting.slug === slug);
-
+  console.log(artPiece);
   const {
     slug: openedSlug,
     imageSource: image,
@@ -24,6 +25,7 @@ export default function ArtPieceDetail() {
     year,
     genre,
     dimensions,
+    colors,
   } = artPiece;
   return (
     <Layout>
@@ -44,7 +46,7 @@ export default function ArtPieceDetail() {
         year={year}
         genre={genre}
       />
-
+      <ColorDisplay colors={colors} />
       <CommentSection slug={openedSlug} />
     </Layout>
   );
