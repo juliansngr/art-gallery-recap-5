@@ -5,6 +5,7 @@ import Link from "next/link";
 import ChevronLeft from "@/public/chevron-left.svg";
 import FavoriteButton from "@/components/FavoriteButton/FavoriteButton";
 import ArtPiece from "@/components/ArtPiece/ArtPiece";
+import Layout from "@/components/Layout/Layout";
 
 export default function ArtPieceDetail() {
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function ArtPieceDetail() {
     dimensions,
   } = artPiece;
   return (
-    <>
+    <Layout>
       <Link href="/gallery">
         <button type="button">
           <ChevronLeft />
@@ -42,6 +43,6 @@ export default function ArtPieceDetail() {
         year={year}
         genre={genre}
       />
-    </>
+    </Layout>
   );
 }
