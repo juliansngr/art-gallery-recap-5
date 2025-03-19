@@ -25,7 +25,10 @@ export default function ArtPieces({ art }) {
   );
 }
 
-const StyledList = styled.ul`
+export const StyledList = styled.ul`
+display: flex;
+flex-direction: column;
 list-style: none;
 padding: 0;
+gap: 2rem;
 `;

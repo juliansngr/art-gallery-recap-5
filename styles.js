@@ -18,6 +18,8 @@ export default createGlobalStyle`
     --background: #232323;
     --on-surface: #edede9;
     --is-liked:rgba(70, 70, 70, 0.56);
+    --hover-button: #fca311;
+    --liked: #a4161a;
   }
       
   body {

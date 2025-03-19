@@ -18,8 +18,7 @@ export default function ArtPiece({
   const { likedArtSlugs } = useArtGalleryContext();
 
   return (
-    <StyledArtPieceWrapper
-      $isLiked={likedArtSlugs.includes(slug)}>
+    <StyledArtPieceWrapper $isLiked={likedArtSlugs.includes(slug)}>
       {href ? (
         <StyledLink href={href}>
           <Image
@@ -30,7 +29,7 @@ export default function ArtPiece({
           />
           <StyledTitle>{name}</StyledTitle>
           <StyledText>{artist}</StyledText>
-          {year && <StyledText>{year}</StyledText>}
+          {year && {year}}
           {genre && <StyledText>{genre}</StyledText>}
         </StyledLink>
       ) : (
@@ -41,10 +40,14 @@ export default function ArtPiece({
             height={height / 7}
             alt={`${name} from ${artist}`}
           />
-          <StyledTitle>{name}</StyledTitle>
-          <StyledText>{artist}</StyledText>
-          {year && <StyledText>{year}</StyledText>}
-          {genre && <StyledText>{genre}</StyledText>}
+          <StyledTitle>{name} {year && <StyledSmall>{year}</StyledSmall>}</StyledTitle>
+          <StyledText><StyledItalic>ARTIST:</StyledItalic> <br />{artist}</StyledText>
+          
+          {genre && (
+            <StyledText>
+              <StyledItalic>GENRE:</StyledItalic> <br /> {genre}
+            </StyledText>
+          )}
         </>
       )}
       <FavoriteButton slug={slug} />
@@ -53,28 +56,38 @@ export default function ArtPiece({
 }
 
 const StyledArtPieceWrapper = styled.div`
-display: flex;
-flex-direction: column;
-background-color: ${({$isLiked}) => $isLiked  ? "var(--is-liked)" : ""};
-border-radius: 10px;
-align-items: flex-start;
-padding: 1.5rem;
-gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  background-color: ${({ $isLiked }) => ($isLiked ? "var(--is-liked)" : "")};
+  border-radius: 10px;
+  align-items: flex-start;
+  padding: 1.5rem;
+  gap: 0.8rem;
 `;
 
 const StyledLink = styled(Link)`
-all: unset;
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-gap: 1rem;
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
 `;
 
 const StyledTitle = styled.h2`
-margin: 0;
+  margin: 0;
 `;
 
 const StyledText = styled.p`
-margin: 0;
+  margin: 0;
+  font-weight: 300;
+`;
+
+const StyledItalic = styled.em`
+font-size: 12px;
+letter-spacing: 0.4px;
+`;
+
+const StyledSmall = styled.small`
 font-weight: 300;
+font-size: 16px;
 `;

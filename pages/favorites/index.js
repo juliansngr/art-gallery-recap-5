@@ -1,7 +1,7 @@
 import ArtPiece from "@/components/ArtPiece/ArtPiece";
 import Layout from "@/components/Layout/Layout";
 import { useArtGalleryContext } from "@/utils/ArtGalleryContext";
-
+import { StyledList } from "@/components/ArtPieces/ArtPieces";
 export default function Favorites() {
   const { likedArtSlugs, data } = useArtGalleryContext();
 
@@ -11,7 +11,8 @@ export default function Favorites() {
 
   return (
     <Layout>
-      <ul>
+       <h1>Favorites</h1>
+      <StyledList>
         {likedArtPieces.map((artPiece) => {
           console.log(artPiece);
           const {
@@ -38,7 +39,7 @@ export default function Favorites() {
             </li>
           );
         })}
-      </ul>
+      </StyledList>
     </Layout>
   );
 }
