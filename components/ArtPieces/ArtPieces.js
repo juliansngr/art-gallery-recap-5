@@ -7,7 +7,7 @@ export default function ArtPieces({ art }) {
   return (
     <StyledList>
       {art.map((painting) => (
-        <li key={painting.slug}>
+        <li key={crypto.randomUUID()}>
           <ArtPiece
             href={`/gallery/${painting.slug}`}
             slug={painting.slug}
@@ -17,8 +17,6 @@ export default function ArtPieces({ art }) {
             height={painting.dimensions.height}
             artist={painting.artist}
           />
-          {/* <Link href={`/gallery/${painting.slug}`}>
-          </Link> */}
         </li>
       ))}
     </StyledList>
