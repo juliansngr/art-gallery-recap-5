@@ -6,6 +6,7 @@ import ChevronLeft from "@/public/chevron-left.svg";
 import FavoriteButton from "@/components/FavoriteButton/FavoriteButton";
 import ArtPiece from "@/components/ArtPiece/ArtPiece";
 import Layout from "@/components/Layout/Layout";
+import styled from "styled-components";
 import CommentSection from "@/components/CommentSection/CommentSection";
 import ColorDisplay from "@/components/ColorDisplay/ColorDisplay";
 
@@ -29,13 +30,12 @@ export default function ArtPieceDetail() {
   } = artPiece;
   return (
     <Layout>
-      <Link href="/gallery">
-        <button type="button">
+      <BasicLink href="/gallery">
+        <BackButton type="button">
           <ChevronLeft />
-          gallery
-        </button>
-      </Link>
-
+          Gallery
+        </BackButton>
+      </BasicLink>
       <ArtPiece
         slug={openedSlug}
         name={name}
@@ -51,3 +51,23 @@ export default function ArtPieceDetail() {
     </Layout>
   );
 }
+
+const BackButton = styled.button`
+  all: unset;
+  display: flex;
+  align-items: center;
+  text-decoration : none;
+  border-radius: 5px;
+  padding: 5px 10px 5px 0px;
+  color: var(--on-surface);
+  background-color: transparent;
+  &:hover {
+    background-color: var(--hover-button);
+  }
+`;
+
+export const BasicLink = styled(Link)`
+  text-decoration: none;
+  align-self: flex-start;
+  margin-bottom: 1rem;
+`;

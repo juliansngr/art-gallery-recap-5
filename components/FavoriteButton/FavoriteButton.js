@@ -2,13 +2,19 @@ import { useArtGalleryContext } from "@/utils/ArtGalleryContext";
 import { useState } from "react";
 import styled from "styled-components";
 
-const StyledButton = styled.button`
-  border-radius: 5px;
-  padding: 5px 20px;
-  border-width: 2px;
+import Heart from "@/public/heart.svg";
 
-  background-color: ${(props) => (props.$isLiked ? "#FBCEB1" : "white")};
-  border-color: ${(props) => (props.$isLiked ? "#fd5c63" : "#636363")};
+const StyledButton = styled.button`
+  all: unset;
+  border-radius: 5px;
+  padding: 5px 5px;
+  align-self: flex-end;
+  color: var(--on-surface);
+  & svg {
+    color: ${(props) => (props.$isLiked ? "var(--liked)" : "var(--on-surface)")};
+    fill: ${(props) => (props.$isLiked ? "var(--liked)" : "")};
+    transform: scale(1.3);
+  }
 `;
 
 export default function FavoriteButton({ slug }) {
@@ -28,7 +34,7 @@ export default function FavoriteButton({ slug }) {
           setIsHovering(false);
         }}
         onClick={() => {
-          console.log(slug);
+          // console.log(slug);
           if (likedArtSlugs.includes(slug)) {
             handleRemoveLike(slug);
           } else {
@@ -36,11 +42,16 @@ export default function FavoriteButton({ slug }) {
           }
         }}
       >
-        {likedArtSlugs.includes(slug)
-          ? isHovering
-            ? "💔 Noooo"
-            : "❤️ Liked!"
-          : "🖤 Like"}
+        {likedArtSlugs.includes(slug) ? (
+          // isHovering ? (
+          //   "You sure?"
+          // ) : 
+          (
+            <Heart />
+          )
+        ) : (
+          <Heart />
+        )}
       </StyledButton>
     </>
   );

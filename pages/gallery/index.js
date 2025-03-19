@@ -1,5 +1,6 @@
 import ArtPieces from "@/components/ArtPieces/ArtPieces";
 import Layout from "@/components/Layout/Layout";
+import { StyledHeading } from "@/components/Spotlight/Spotlight";
 import { useArtGalleryContext } from "@/utils/ArtGalleryContext";
 
 export default function GalleryPage() {
@@ -7,7 +8,7 @@ export default function GalleryPage() {
 
   return (
     <Layout>
-      <h1>Gallery</h1>
+      <StyledHeading>Gallery</StyledHeading>
       <ArtPieces art={art} />
     </Layout>
   );

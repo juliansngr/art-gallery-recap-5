@@ -2,6 +2,7 @@ import { useArtGalleryContext } from "@/utils/ArtGalleryContext";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import ArtPiece from "../ArtPiece/ArtPiece";
 import { useState } from "react";
+import styled from "styled-components";
 
 export default function Spotlight() {
   const { data } = useArtGalleryContext();
@@ -15,19 +16,33 @@ export default function Spotlight() {
 
   return (
     <>
-      <h2>Spotlight</h2>
-      <p>
-        Have you seen this awesome new art piece by{" "}
-        <b>{randomArtPiece.artist}</b>? NO? Me neither. So here it is:
-      </p>
+      <StyledHeading>Spotlight</StyledHeading>
+      <StyledBody>
+        Have you seen this awesome new art piece<br/> by{" "}
+        <StyledArtistBold color={randomArtPiece.colors[3]}>{randomArtPiece.artist}</StyledArtistBold>? NO? Me neither. So here it is:
+      </StyledBody>
       <ArtPiece
         slug={randomArtPiece.slug}
         name={randomArtPiece.name}
         image={randomArtPiece.imageSource}
         width={randomArtPiece.dimensions.width}
         height={randomArtPiece.dimensions.height}
-        artist={randomArtPiece.artist}
+        // artist={randomArtPiece.artist}
       />
     </>
   );
 }
+
+export const StyledHeading = styled.h1`
+align-self: flex-start;
+`;
+const StyledBody = styled.p`
+font-weight: 300;
+align-self: flex-start;
+`;
+
+const StyledArtistBold = styled.b`
+font-weight: 700;
+letter-spacing: 0.3px;
+color: ${({color}) => color};
+`;

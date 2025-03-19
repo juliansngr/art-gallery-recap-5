@@ -1,7 +1,8 @@
 import ArtPiece from "@/components/ArtPiece/ArtPiece";
 import Layout from "@/components/Layout/Layout";
 import { useArtGalleryContext } from "@/utils/ArtGalleryContext";
-
+import { StyledList } from "@/components/ArtPieces/ArtPieces";
+import { StyledHeading } from "@/components/Spotlight/Spotlight";
 export default function Favorites() {
   const { likedArtSlugs, data } = useArtGalleryContext();
 
@@ -11,9 +12,10 @@ export default function Favorites() {
 
   return (
     <Layout>
-      <ul>
+       <StyledHeading>Favorites</StyledHeading>
+      <StyledList>
         {likedArtPieces.map((artPiece) => {
-          console.log(artPiece);
+          // console.log(artPiece);
           const {
             slug: openedSlug,
             imageSource: image,
@@ -38,7 +40,7 @@ export default function Favorites() {
             </li>
           );
         })}
-      </ul>
+      </StyledList>
     </Layout>
   );
 }
