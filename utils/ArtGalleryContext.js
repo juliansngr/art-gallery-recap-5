@@ -1,19 +1,35 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import useSWR from "swr";
+import useLocalStorageState from "use-local-storage-state";
 
 const ArtGalleryContext = createContext();
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export function ArtGalleryProvider({ children }) {
-  const [bilder, setBilder] = useState(
-    "Hallo, das ist ein wunderbarer String. Jippie."
-  );
-
   const { data, error, isLoading, mutate } = useSWR(
     "https://example-apis.vercel.app/api/art",
     fetcher
   );
+
+  const [likedArtSlugs, setLikedArtSlugs] = useLocalStorageState(
+    "likedArtSlugs",
+    { defaultValue: [] }
+  );
+
+  const handleLike = (slugToAdd) => {
+    const newLike = data.find((art) => art.slug === slugToAdd);
+    setLikedArtSlugs([newLike.slug, ...likedArtSlugs]);
+  };
+
+  const handleRemoveLike = (slugToRemove) => {
+    const likesRemoved = likedArtSlugs.filter((slug) => {
+      if (slug !== slugToRemove) {
+        return slug;
+      }
+    });
+    setLikedArtSlugs(likesRemoved);
+  };
 
   if (isLoading) {
     return <h1>🖼️ Loading... </h1>;
@@ -22,10 +38,12 @@ export function ArtGalleryProvider({ children }) {
   return (
     <ArtGalleryContext.Provider
       value={{
-        bilder,
         data,
         error,
         isLoading,
+        likedArtSlugs,
+        handleLike,
+        handleRemoveLike,
       }}
     >
       {children}
