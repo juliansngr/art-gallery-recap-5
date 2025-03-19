@@ -56,7 +56,7 @@ const BackButton = styled.button`
   all: unset;
   display: flex;
   align-items: center;
-  text-decoration: none;
+  text-decoration : none;
   border-radius: 5px;
   padding: 5px 10px 5px 0px;
   color: var(--on-surface);

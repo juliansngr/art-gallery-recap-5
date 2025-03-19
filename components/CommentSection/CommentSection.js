@@ -14,7 +14,7 @@ export default function CommentSection({ slug }) {
   );
 }
 
-const StyledHeadingSmall = styled.h3`
+export const StyledHeadingSmall = styled.h3`
 letter-spacing: 0.3px;
 font-weight: 400;
 margin-top: 4rem;
