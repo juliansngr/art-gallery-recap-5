@@ -41,7 +41,7 @@ export default function ArtPiece({
             alt={`${name} from ${artist}`}
           />
           <StyledTitle>{name} {year && <StyledSmall>{year}</StyledSmall>}</StyledTitle>
-          <StyledText><StyledItalic>ARTIST:</StyledItalic> <br />{artist}</StyledText>
+          { artist && (<StyledText><StyledItalic>ARTIST:</StyledItalic> <br />{artist}</StyledText>)}
           
           {genre && (
             <StyledText>
