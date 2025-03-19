@@ -6,7 +6,7 @@ const StyledButton = styled.button`
   border-radius: 5px;
   padding: 5px 20px;
   border-width: 2px;
-
+  align-self: flex-end;
   background-color: ${(props) => (props.isLiked ? "#FBCEB1" : "white")};
   border-color: ${(props) => (props.isLiked ? "#fd5c63" : "#636363")};
 `;

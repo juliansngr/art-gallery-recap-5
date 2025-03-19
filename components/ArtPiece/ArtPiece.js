@@ -57,7 +57,7 @@ display: flex;
 flex-direction: column;
 background-color: ${({$isLiked}) => $isLiked  ? "var(--is-liked)" : ""};
 border-radius: 10px;
-align-items: center;
+align-items: flex-start;
 padding: 1.5rem;
 gap: 1rem;
 `;
